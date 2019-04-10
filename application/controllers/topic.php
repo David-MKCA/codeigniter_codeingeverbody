@@ -1,14 +1,26 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Topic extends CI_Controller {
+	function __construct(){
+		parent:: __construct();
+		$this->load->database();
+		$this->load->model('topic_model');
+	}
 	function index(){
 		$this->load->view('head');
-		$this->load->view('topic');
+		$topics = $this->topic_model->gets();
+		$data2 = array('topics'=>$topics);
+		$this->load->view('topic_list', $data2);
+		$this->load->view('main');
 		$this->load->view('footer');
 	}
-	function main($id){
+	function get($id){
 		$this->load->view('head');
-		$data=array('id'=>$id);
-		$this->load->view('main',$data);
+		$topics =  $this->topic_model->gets();
+		$data2 = array('topics'=>$topics);
+		$this->load->view('topic_list', $data2);
+		$topic = $this->topic_model->get($id);
+		$data=array('topic'=>$topic);
+		$this->load->view('get',$data);
 		$this->load->view('footer');
 	}
 }
