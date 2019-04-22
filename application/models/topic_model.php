@@ -9,8 +9,12 @@
     }
 
     public function get($topic_id){
-       return $this->db->get_where('topic', array('id'=>$topic_id))->row(); // ACTIVE RECORD
-       //return $this->db->query('SELECT * FROM topic WHERE id='.$topic_id);
+      $this->db->select('id');
+      $this->db->select('title');
+      $this->db->select('description');
+      $this->db->select('UNIX_TIMESTAMP(created) AS created');
+      return $this->db->get_where('topic', array('id'=>$topic_id))->row(); // ACTIVE RECORD
+      //return $this->db->query('SELECT * FROM topic WHERE id='.$topic_id);
     }
   }
 ?>
