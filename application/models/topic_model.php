@@ -29,7 +29,9 @@
     }
 
     function del(){
-      $this->db->query('DELETE FROM topic WHERE id>9');
+  //  $this->db->query('DELETE FROM topic WHERE id>9');
+      $this->db->where('id >',9);
+      $this->db->delete('topic');
     }
   }
 ?>

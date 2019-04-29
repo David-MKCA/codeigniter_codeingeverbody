@@ -17,7 +17,6 @@ class Topic extends CI_Controller {
 		$this->load->helper(array('url', 'HTML', 'korean'));
 		$data=array('topic'=>$topic);
 		$this->load->view('get',$data);
-
 		$this->load->view('footer');
 	}
 
