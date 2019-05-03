@@ -59,6 +59,7 @@ class Topic extends CI_Controller {
 	}
 
 	function _head(){
+		$this->load->config('opentutorials');
 		$this->load->view('head');
 		$topics = $this->topic_model->gets();
 		$data2 = array('topics'=>$topics);
